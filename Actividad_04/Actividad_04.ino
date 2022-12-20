@@ -1,4 +1,6 @@
-// Use only core 1 for demo purposes
+/* En este código vemos implementado el queue que es un almacenamiento temporal
+que funciona como una cola y vemos como una tarea creandose en este programa, también la 
+condición del ciclo que hace quever cuando el queue esté lleno*/
 #if CONFIG_FREERTOS_UNICORE
   static const BaseType_t app_cpu = 0;
 #else
@@ -65,3 +67,4 @@ void loop() {
 
   vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
+
