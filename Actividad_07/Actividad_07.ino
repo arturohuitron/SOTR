@@ -1,5 +1,7 @@
 //#include <timers.h>
-
+/*En este codigo creamos dos timers uno que solo se acciona una vez y otro que se repite, 
+los cuales debende imprimir su respectivo mensaje al puerto serial. Tenemos que al escribir 
+algo en el puerto serial este reinicia un timer.*/
 #if CONFIG_FREERTOS_UNICORE
   static const BaseType_t app_cpu = 0;
 #else
@@ -77,4 +79,11 @@ void setup() {
 
 void loop() {
   // Execution should never get here
+  if (Serial.available()>0){
+  char incoming = Serial.read();
+  if (incoming != '\n'){
+        Serial.println("reinicio de timer");
+        xTimerStart(one_shot_timer, portMAX_DELAY);
+  }
+  }
 }
