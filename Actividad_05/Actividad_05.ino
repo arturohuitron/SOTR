@@ -1,4 +1,5 @@
-// Use only core 1 for demo purposes
+/* En este código hacemos uso de mutex que funcionapara que las tareas creadas se ordenen
+como imprimen de manera ascendente de uno en uno iniciando por el 1*/
 #if CONFIG_FREERTOS_UNICORE
   static const BaseType_t app_cpu = 0;
 #else
@@ -29,7 +30,7 @@ void incTask(void *parameters) {
       
       Serial.println(shared_var);
   
-     // xSemaphoreGive(mutex);
+      //xSemaphoreGive(mutex);
 
     } else {
       // Do something else
@@ -49,7 +50,7 @@ void setup() {
   Serial.println();
   Serial.println("---FreeRTOS mutexes-");
 
- mutex = xSemaphoreCreateMutex();
+  mutex = xSemaphoreCreateMutex();
 
   // Start task 1
   xTaskCreatePinnedToCore(incTask,
